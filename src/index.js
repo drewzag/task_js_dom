@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
   const getData = async () =>
-    fetch('data.json')
+    fetch('/src/data.json')
       .then((res) => {
         if (res.ok) return res.json()
         else throw new Error('Something went wrong')
