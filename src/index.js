@@ -26,19 +26,17 @@ document.addEventListener('DOMContentLoaded', () => {
         li.classList.add('list__item')
         li.textContent = el.team
         list.appendChild(li)
-        li.addEventListener('click', onClickHandlerItem)
       })
   })
 
   const onClickHandlerItem = (event) => {
-    const listItem = document.querySelectorAll('.list__item')
     h1.remove()
-    listItem.forEach((el) => el.classList.remove('active'))
+    document.querySelector('.list__item.active')?.classList.remove('active')
     event.target.classList.add('active')
     getData().then((res) => {
       const team = res.find((el) => el.team === event.target.textContent)
       main.innerHTML = `<div class="main__logo">
-      <img src=${team.img} alt="" class="logo" />
+      <img src=${team.img} alt="${team.team} logo" class="logo" />
     </div>
       <p class="main__desc">${team.desc}`
     })
@@ -49,5 +47,6 @@ document.addEventListener('DOMContentLoaded', () => {
     list.classList.toggle('show__list')
   }
 
+  list.addEventListener('click', onClickHandlerItem)
   menuIcon.addEventListener('click', onShowMenu)
 })
