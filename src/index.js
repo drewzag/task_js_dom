@@ -7,7 +7,7 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 
   const getData = async () =>
-    fetch('/src/data.json')
+    fetch('src/data.json')
       .then(handleErrors)
       .then((res) => res.json())
       .catch((error) => {
