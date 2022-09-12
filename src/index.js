@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  function handleErrors(response) {
+  const handleErrors = (response) => {
     if (!response.ok) {
       throw Error(response.statusText)
     }
