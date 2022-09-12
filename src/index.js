@@ -30,17 +30,19 @@ document.addEventListener('DOMContentLoaded', () => {
   })
 
   const onClickHandlerItem = (event) => {
-    h1.remove()
-    document.querySelector('.list__item.active')?.classList.remove('active')
-    event.target.classList.add('active')
-    getData().then((res) => {
-      const team = res.find((el) => el.team === event.target.textContent)
-      main.innerHTML = `<div class="main__logo">
+    if (event.target && event.target.nodeName == 'LI') {
+      h1.remove()
+      document.querySelector('.list__item.active')?.classList.remove('active')
+      event.target.classList.add('active')
+      getData().then((res) => {
+        const team = res.find((el) => el.team === event.target.textContent)
+        main.innerHTML = `<div class="main__logo">
       <img src=${team.img} alt="${team.team} logo" class="logo" />
     </div>
       <p class="main__desc">${team.desc}`
-    })
-    list.classList.remove('show__list')
+      })
+      list.classList.remove('show__list')
+    }
   }
 
   const onShowMenu = () => {
