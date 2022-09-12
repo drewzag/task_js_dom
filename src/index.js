@@ -20,13 +20,15 @@ document.addEventListener('DOMContentLoaded', () => {
   const menuIcon = document.querySelector('div.menu__icon')
 
   getData().then((res) => {
+    const container = document.createDocumentFragment()
     res &&
       res.forEach((el) => {
         const li = document.createElement('li')
         li.classList.add('list__item')
         li.textContent = el.team
-        list.appendChild(li)
+        container.appendChild(li)
       })
+    list.append(container)
   })
 
   const onClickHandlerItem = (event) => {
